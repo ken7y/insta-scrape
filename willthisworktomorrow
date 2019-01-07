@@ -1,0 +1,17 @@
+curl 'https://www.instagram.com/graphql/query/?query_hash=e0f59e4a1c8d78d0161873bc2ee7ec44&variables=%7B%22shortcode%22%3A%22BoVqWT8AqRh%22%2C%22include_reel%22%3Atrue%2C%22first%22%3A24%7D' -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' -H 'accept: */*'  -H 'x-instagram-gis: 6f4665d819c730d5504cb01832a604ca' --compressed
+
+check the x-instagram-gis in the header of this link
+https://www.instagram.com/p/BoVqWT8AqRh/liked_by/
+
+a99862df8d700f4ced4a57e4538dcdfc  : new xinstagis
+
+old xinstagis : 6f4665d819c730d5504cb01832a604ca
+
+
+{1c1b7ab2ac412bb16c06fe0a3bb2cead}:/{bunengzhuce17}/
+
+
+id :https:\/\/www.instagram.com\/bunengzhuce17\/
+first: 24
+after :cursor
+{"shortcode":"BoVqWT8AqRh","include_reel":true,"first":24}

@@ -1,0 +1,29 @@
+So basically the x-instagram-gis persists so far now that its 2 days in
+
+basically I gotta do a perl version of curl. But I need to get the x-instagram gis
+So I need to grab that off somewhere.
+
+The url is fine because thats a url decode and it will look something like https://www.instagram.com/graphql/query/?query_hash=e0f59e4a1c8d78d0161873bc2ee7ec44
+&variables={"shortcode":"BoVqWT8AqRh","include_reel":true,"first":24}  but in url encoded
+
+So the current problem is where do i get the x-instagram-gis and once I do
+
+I need to do a ruby curl that of the url above with header user agent and xinstagis
+
+and once I do that, it'll be an easy life.
+
+New problem. Whenever a new set of likers are loaded theres a new x-instagram-gis
+
+someone posted this
+Anonymous graphql requests now need a
+ valid query_hash, csrf_token and a header x-instagram-gis set to the md5 hash of rhx_gis + ":" + csrf_token + ":" + user agent + ":" + variables.
+
+Here's a working example for whoever wants to
+implement a fix: https://gist.github.com/marcoqu/e17e1c4414f8d18e6672976d941161fa
+https://stackoverflow.com/questions/49786980/how-to-perform-unauthenticated-instagram-web-scraping-in-response-to-recent-priv
+
+
+
+alright so the rhx_gis is found in the base html page of the profile.
+Just html scrape the page and grep for a rhx_gis
+the md5hash should be rhx_gis:variables
