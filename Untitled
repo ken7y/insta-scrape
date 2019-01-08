@@ -27,3 +27,21 @@ https://stackoverflow.com/questions/49786980/how-to-perform-unauthenticated-inst
 alright so the rhx_gis is found in the base html page of the profile.
 Just html scrape the page and grep for a rhx_gis
 the md5hash should be rhx_gis:variables
+
+
+1c1b7ab2ac412bb16c06fe0a3bb2cead
+
+nonce:GrWIXh3XLPl/TQNLYce5tA=="
+QVFCV1R3WEd0S3QzOFlrNFNqN0pYakhUT3RGNno5eHB4d0wyVlpaMDhCWlUwOUI5dnF5TmNGeGJyODNnSjFac0JiMVZhajV6cktWUHhpUHQzRjRZMjk2bA==
+
+804777849
+
+
+
+import json
+import hashlib
+
+params = {"id":"804777849","first":12,"after":"QVFDTXN6VXBWOTZfSWVuNXpBZS1rLTZmSXRUQU9PcjlrWURLQVFmMTBTNEw1Z0EyQ3RaY1lUOVBIT05vSTJGQko1dVJxMWRkYXJ0TjI2amNqQ1Y1S0pOVA=="}
+json_params = json.dumps(params, separators=(',', ':'))
+values = "{}:{}".format("1248b0d58b7c1f1a6940247f9be6362a", json_params)
+print (hashlib.md5(values.encode('utf-8')).hexdigest())

@@ -3,6 +3,7 @@
 
 require 'webdrivers'
 require 'watir'
+require 'watir-scroll'
 require 'net/http'
 require 'webdriver-user-agent'
 
@@ -11,17 +12,18 @@ require 'webdriver-user-agent'
 driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, orientation: :portrait)
 browser = Watir::Browser.new driver
 
-browser.goto("https://www.instagram.com/p/BoVqWT8AqRh")
+browser.goto("https://www.instagram.com/p/BsXS8EThMib")
 # browser.driver.manage.window.maximize
-browser.execute_script("window.scrollTo(0, document.body.scrollHeight);\n")
+20.times {browser.send_keys :down}
 
-browser.link(text: '148 likes').click
 
-scrollable = browser.div(class: 'j6cq2') # div with overflow-y=scroll
+browser.link(text: '994 likes').click
 
+sleep(5)
+2500.times {browser.send_keys :down}
 
 # figure out query hash it makes then you make the request it makes
-puts browser.element.inner_html
+# puts browser.element.inner_html
 puts "Yeet"
 
 browser.element(css: ".js-generated-class").wait_until_present
