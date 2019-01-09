@@ -1,6 +1,6 @@
 
 # page = Nokogiri::HTML(open("https://www.instagram.com/p/BoVqWT8AqRh/liked_by/"))
-
+#73 seconds for 600 likes
 require 'webdrivers'
 require 'watir'
 require 'watir-scroll'
@@ -8,23 +8,36 @@ require 'net/http'
 require 'webdriver-user-agent'
 
 # puts res.body
+timeStart = Time.now.to_i
 
 driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, orientation: :portrait)
 browser = Watir::Browser.new driver
 
-browser.goto("https://www.instagram.com/p/BsXS8EThMib")
+browser.goto("https://www.instagram.com/p/BsKLRHUnqle/")
 # browser.driver.manage.window.maximize
 20.times {browser.send_keys :down}
 
+likes = 144
 
-browser.link(text: '994 likes').click
+browser.link(text: "#{likes} likes").click
 
-sleep(5)
-2500.times {browser.send_keys :down}
+sleep(2)
 
-# figure out query hash it makes then you make the request it makes
-# puts browser.element.inner_html
+likes = likes*2.5
+
+likes.to_i.times {browser.send_keys :down}
+5.times {browser.send_keys :up}
+
+#d7Byh
+timeEnd = Time.now.to_i
+
 puts "Yeet"
+puts timeEnd - timeStart
+
+output = File.open( "outputfile.txt","w" )
+output << browser.span(:id => 'react-root').inner_html.scan(/.{1,66} /).join("\n")
+output.close
+
 
 browser.element(css: ".js-generated-class").wait_until_present
 
